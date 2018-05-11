@@ -109,6 +109,17 @@ class ViewController: UIViewController, MKMapViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        if let annotationTitle = view.annotation?.title {
+            print("User tapped \(annotationTitle!)")
+            /*if let nextVC = segue.destination as? DetailViewController
+            {
+                nextVC.temp = self.annotation.title
+            }*/
+        }
+        
+    }
+    
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
         let center = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
@@ -116,4 +127,5 @@ class ViewController: UIViewController, MKMapViewDelegate {
         mapView.setRegion(region, animated: true)
     }
 }
+
 

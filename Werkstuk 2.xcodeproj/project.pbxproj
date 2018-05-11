@@ -17,6 +17,7 @@
 		B3462D9C20A4C56D00F1A617 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B3462D9E20A4C56D00F1A617 /* Localizable.strings */; };
 		B3462DA220A5B09F00F1A617 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3462DA120A5B09F00F1A617 /* MapKit.framework */; };
 		B3462DA520A5C50200F1A617 /* MyAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3462DA420A5C50200F1A617 /* MyAnnotation.swift */; };
+		B36A735620A618FF004F4221 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36A735520A618FF004F4221 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		B3462DA120A5B09F00F1A617 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		B3462DA320A5B47300F1A617 /* EHB.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = EHB.gpx; path = ../../Downloads/EHB.gpx; sourceTree = "<group>"; };
 		B3462DA420A5C50200F1A617 /* MyAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAnnotation.swift; sourceTree = "<group>"; };
+		B36A735520A618FF004F4221 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				B3462D7320A4C2E300F1A617 /* LaunchScreen.storyboard */,
 				B3462D7620A4C2E300F1A617 /* Info.plist */,
 				B3462DA420A5C50200F1A617 /* MyAnnotation.swift */,
+				B36A735520A618FF004F4221 /* DetailViewController.swift */,
 			);
 			path = "Werkstuk 2";
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				B3462D6D20A4C2E000F1A617 /* ViewController.swift in Sources */,
 				B3462D6B20A4C2E000F1A617 /* AppDelegate.swift in Sources */,
 				B3462DA520A5C50200F1A617 /* MyAnnotation.swift in Sources */,
+				B36A735620A618FF004F4221 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
