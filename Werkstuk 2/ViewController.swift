@@ -10,7 +10,10 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, MKMapViewDelegate {
+    
+    var locationManager = CLLocationManager()
+    
     var viloArray = [String] ()
 
     override func viewDidLoad() {
@@ -49,8 +52,11 @@ class ViewController: UIViewController {
             task.resume()
         }
         
+        //parseJSON()
         
-        parseJSON()
+        locationManager.requestAlwaysAuthorization()
+        
+        locationManager.startUpdatingLocation()
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,6 +64,11 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+        let center = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        
+        mapView.setRegion(region, animated: true)
+    }
 }
 

@@ -15,6 +15,7 @@
 		B3462D8020A4C2E300F1A617 /* Werkstuk_2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3462D7F20A4C2E300F1A617 /* Werkstuk_2Tests.swift */; };
 		B3462D8B20A4C2E300F1A617 /* Werkstuk_2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3462D8A20A4C2E300F1A617 /* Werkstuk_2UITests.swift */; };
 		B3462D9C20A4C56D00F1A617 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B3462D9E20A4C56D00F1A617 /* Localizable.strings */; };
+		B3462DA220A5B09F00F1A617 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3462DA120A5B09F00F1A617 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,8 @@
 		B3462D9B20A4C52B00F1A617 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		B3462D9D20A4C56D00F1A617 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B3462D9F20A4C57700F1A617 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B3462DA120A5B09F00F1A617 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		B3462DA320A5B47300F1A617 /* EHB.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = EHB.gpx; path = ../../Downloads/EHB.gpx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3462DA220A5B09F00F1A617 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,11 +86,13 @@
 		B3462D5E20A4C2E000F1A617 = {
 			isa = PBXGroup;
 			children = (
+				B3462DA320A5B47300F1A617 /* EHB.gpx */,
 				B3462D9E20A4C56D00F1A617 /* Localizable.strings */,
 				B3462D6920A4C2E000F1A617 /* Werkstuk 2 */,
 				B3462D7E20A4C2E300F1A617 /* Werkstuk 2Tests */,
 				B3462D8920A4C2E300F1A617 /* Werkstuk 2UITests */,
 				B3462D6820A4C2E000F1A617 /* Products */,
+				B3462DA020A5B09F00F1A617 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -129,6 +135,14 @@
 				B3462D8C20A4C2E300F1A617 /* Info.plist */,
 			);
 			path = "Werkstuk 2UITests";
+			sourceTree = "<group>";
+		};
+		B3462DA020A5B09F00F1A617 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B3462DA120A5B09F00F1A617 /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,6 +213,11 @@
 				TargetAttributes = {
 					B3462D6620A4C2E000F1A617 = {
 						CreatedOnToolsVersion = 9.3;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					B3462D7A20A4C2E300F1A617 = {
 						CreatedOnToolsVersion = 9.3;
