@@ -9,8 +9,11 @@
 import UIKit
 import MapKit
 
+private let kVilloMapAnimationTime = 0.300
+
 class AnnotationView: MKAnnotationView {
     // data
+    weak var villoDetailDelegate: VilloDetailMapViewDelegate?
     weak var customCalloutView: VilloDetailMapView?
     override var annotation: MKAnnotation? {
         willSet { customCalloutView?.removeFromSuperview() }
@@ -67,9 +70,17 @@ class AnnotationView: MKAnnotationView {
         }
     }
     
-    func loadPVilloDetailMapView() -> UIView? { // 4
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: 240, height: 280))
-        return view
+    func loadVilloDetailMapView() -> VilloDetailMapView? {
+        if let views = Bundle.main.loadNibNamed("VilloDetailMapView", owner: self, options: nil) as? [VilloDetailMapView], views.count > 0 {
+            let villoDetailMapView = views.first!
+            villoDetailMapView.delegate = self.villoDetailDelegate
+            if let villoAnnotation = annotation as? MyAnnotation {
+                let villo = villoAnnotation.villo
+                villoDetailMapView.configureWithVillo(villoStation: villo)
+            }
+            return villoDetailMapView
+        }
+        return nil
     }
     
     override func prepareForReuse() { // 5

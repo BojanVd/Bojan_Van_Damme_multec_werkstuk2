@@ -8,3 +8,8 @@
 
 
 "Hello world!" = "Hello world!";
+"Address" = "Address:";
+"Status" = "Status:";
+"AvailableStands" = "Available bike stands:";
+"AvailableBikes" = "Available bikes:";
+"SeeDetails" = "See Details";

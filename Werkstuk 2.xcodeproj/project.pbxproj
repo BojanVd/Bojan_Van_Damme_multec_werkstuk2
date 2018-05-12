@@ -21,6 +21,7 @@
 		B36A735820A7226F004F4221 /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36A735720A7226F004F4221 /* AnnotationView.swift */; };
 		B36A735A20A72465004F4221 /* VilloStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36A735920A72465004F4221 /* VilloStation.swift */; };
 		B36A735C20A7303D004F4221 /* VilloDetailMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B36A735B20A7303D004F4221 /* VilloDetailMapView.xib */; };
+		B36A736020A73524004F4221 /* VilloDetailMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36A735F20A73524004F4221 /* VilloDetailMapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		B36A735720A7226F004F4221 /* AnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
 		B36A735920A72465004F4221 /* VilloStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VilloStation.swift; sourceTree = "<group>"; };
 		B36A735B20A7303D004F4221 /* VilloDetailMapView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VilloDetailMapView.xib; sourceTree = "<group>"; };
+		B36A735F20A73524004F4221 /* VilloDetailMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VilloDetailMapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 				B36A735720A7226F004F4221 /* AnnotationView.swift */,
 				B36A735920A72465004F4221 /* VilloStation.swift */,
 				B36A735B20A7303D004F4221 /* VilloDetailMapView.xib */,
+				B36A735F20A73524004F4221 /* VilloDetailMapView.swift */,
 			);
 			path = "Werkstuk 2";
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 			files = (
 				B3462D6D20A4C2E000F1A617 /* ViewController.swift in Sources */,
 				B3462D6B20A4C2E000F1A617 /* AppDelegate.swift in Sources */,
+				B36A736020A73524004F4221 /* VilloDetailMapView.swift in Sources */,
 				B36A735820A7226F004F4221 /* AnnotationView.swift in Sources */,
 				B36A735A20A72465004F4221 /* VilloStation.swift in Sources */,
 				B3462DA520A5C50200F1A617 /* MyAnnotation.swift in Sources */,

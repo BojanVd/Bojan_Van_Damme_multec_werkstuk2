@@ -13,7 +13,9 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class ViewController: UIViewController, MKMapViewDelegate {
+private let kVilloAnnotationName = "kVilloAnnotationName"
+
+class ViewController: UIViewController, MKMapViewDelegate, VilloDetailMapViewDelegate {
     var villos = [VilloStation]()
     var selectedVilloStation: VilloStation?
     
@@ -32,9 +34,13 @@ class ViewController: UIViewController, MKMapViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //task()
+        self.MijnMap.removeAnnotations(self.MijnMap.annotations)
+        self.MijnMap.addAnnotations(annotations)
+        //print(annotations)
     }
-    
+    var annotations = [MKAnnotation]()
     override func viewDidLoad() {
+        
         
         //self.myLabel.text = NSLocalizedString("Hello world!", comment: "")
         MijnMap.showsUserLocation = true
@@ -44,7 +50,6 @@ class ViewController: UIViewController, MKMapViewDelegate {
         let urlRequest = URL(string: "https://api.jcdecaux.com/vls/v1/stations?apiKey=6d5071ed0d0b3b68462ad73df43fd9e5479b03d6&contract=Bruxelles-Capitale")
         
         let task = URLSession.shared.dataTask(with: urlRequest!) {(data, response, error ) in
-            //var annotations = [MKAnnotation]
             
             guard error == nil else {
                 print("returning error")
@@ -92,14 +97,13 @@ class ViewController: UIViewController, MKMapViewDelegate {
                     
                     self.villos.append(VilloStation(name: self.nameStation[i], address: self.addressStation[i], gps: coordinate, status: self.status[i], availableStands: self.availableStands[i], availableBikes: self.availableBikes[i]))
                     
-                    let annotation:MyAnnotation = MyAnnotation(coordinate: coordinate, title: self.nameStation[i])
-                    self.MijnMap.addAnnotation(annotation)
+                    let annotation:MyAnnotation = MyAnnotation(villo: self.villos[i], coordinate: coordinate, title: self.nameStation[i])
                     
-                    print(self.nameStation[i])
+                    self.annotations.append(annotation)
+                    
                     
                 }
             }
-            
             
             
             
@@ -143,10 +147,10 @@ class ViewController: UIViewController, MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation { return nil }
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotation as! String)
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: kVilloAnnotationName)
         
         if annotationView == nil {
-            annotationView = AnnotationView(annotation: annotation, reuseIdentifier: annotation as! String )
+            annotationView = AnnotationView(annotation: annotation, reuseIdentifier: kVilloAnnotationName)
             (annotationView as! AnnotationView).villoDetailDelegate = self
         } else {
             annotationView!.annotation = annotation
@@ -159,6 +163,11 @@ class ViewController: UIViewController, MKMapViewDelegate {
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         
         mapView.setRegion(region, animated: true)
+    }
+    
+    func detailsRequestedForVillo(villoStation: VilloStation) {
+        self.selectedVilloStation = villoStation
+        self.performSegue(withIdentifier: "villoDetails", sender: nil)
     }
 }
 

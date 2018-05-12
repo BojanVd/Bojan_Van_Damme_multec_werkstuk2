@@ -10,10 +10,25 @@ import UIKit
 import MapKit
 
 class MyAnnotation: NSObject, MKAnnotation {
+    var villo: VilloStation
+    //var coordinate: CLLocationCoordinate2D {return villo.gps}
+    
+    init (villo: VilloStation, coordinate:CLLocationCoordinate2D, title:String)
+    {
+        self.coordinate = coordinate
+        self.title = title
+        self.villo = villo
+        super.init()
+    }
+    
+    /*var title: String? {
+        return villo.name
+    }*/
+    
     var coordinate: CLLocationCoordinate2D
     var title: String?
     
-    override init() {
+    /*override init() {
         coordinate = CLLocationCoordinate2D()
         title = ""
     }
@@ -23,5 +38,5 @@ class MyAnnotation: NSObject, MKAnnotation {
         self.coordinate = coordinate
         self.title = title
         
-    }
+    }*/
 }

@@ -8,3 +8,8 @@
 
 
 "Hello world!" = "Hallo wereld!";
+"Address" = "Adres:";
+"Status" = "Status:";
+"AvailableStands" = "Beschikbare fietsrekken:";
+"AvailableBikes" = "Beschikbare fietsen:";
+"SeeDetails" = "Meer Details";
