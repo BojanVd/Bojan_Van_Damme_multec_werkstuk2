@@ -14,6 +14,8 @@ import MapKit
 import CoreLocation
 
 class ViewController: UIViewController, MKMapViewDelegate {
+    var villos = [VilloStation]()
+    var selectedVilloStation: VilloStation?
     
     var locationManager = CLLocationManager()
     
@@ -27,6 +29,11 @@ class ViewController: UIViewController, MKMapViewDelegate {
     var availableStands: Array <Int> = Array <Int>()
     var availableBikes: Array <Int> = Array <Int>()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //task()
+    }
+    
     override func viewDidLoad() {
         
         //self.myLabel.text = NSLocalizedString("Hello world!", comment: "")
@@ -37,6 +44,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         let urlRequest = URL(string: "https://api.jcdecaux.com/vls/v1/stations?apiKey=6d5071ed0d0b3b68462ad73df43fd9e5479b03d6&contract=Bruxelles-Capitale")
         
         let task = URLSession.shared.dataTask(with: urlRequest!) {(data, response, error ) in
+            //var annotations = [MKAnnotation]
             
             guard error == nil else {
                 print("returning error")
@@ -70,17 +78,30 @@ class ViewController: UIViewController, MKMapViewDelegate {
                         if let addressVillo = objVillo["address"] as? AnyObject {
                             self.addressStation.append(String(addressVillo as! NSString))
                         }
+                        if let statusVillo = objVillo["status"] as? AnyObject {
+                            self.status.append(String(statusVillo as! NSString))
+                        }
+                        if let standsVillo = objVillo["available_bike_stands"] as? AnyObject {
+                            self.availableStands.append(Int(standsVillo as! NSNumber))
+                        }
+                        if let bikesVillo = objVillo["available_bikes"] as? AnyObject {
+                            self.availableBikes.append(Int(bikesVillo as! NSNumber))
+                        }
                     }
-                    
                     let coordinate:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: self.coorLat[i], longitude: self.coorLng[i])
+                    
+                    self.villos.append(VilloStation(name: self.nameStation[i], address: self.addressStation[i], gps: coordinate, status: self.status[i], availableStands: self.availableStands[i], availableBikes: self.availableBikes[i]))
+                    
                     let annotation:MyAnnotation = MyAnnotation(coordinate: coordinate, title: self.nameStation[i])
                     self.MijnMap.addAnnotation(annotation)
+                    
+                    print(self.nameStation[i])
                     
                 }
             }
             
             
-            //print(self.nameStation)
+            
             
             DispatchQueue.main.async {
                 //self.tableView.reloadData()
@@ -118,6 +139,19 @@ class ViewController: UIViewController, MKMapViewDelegate {
             }*/
         }
         
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation { return nil }
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotation as! String)
+        
+        if annotationView == nil {
+            annotationView = AnnotationView(annotation: annotation, reuseIdentifier: annotation as! String )
+            (annotationView as! AnnotationView).villoDetailDelegate = self
+        } else {
+            annotationView!.annotation = annotation
+        }
+        return annotationView
     }
     
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
